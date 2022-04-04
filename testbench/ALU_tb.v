@@ -1,5 +1,5 @@
 `timescale 1ps/1ps
-`include "/Volumes/Files/COA/design/ALU_model.v"
+`include "../design/ALU_model.v"
 
 module ALU_tb;
     reg[3:0] operand_test_1, opperand_test_2;
