@@ -1,0 +1,85 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_010C9F90 .scope module, "PC_tb" "PC_tb" 2 5;
+ .timescale -12 -12;
+v010C88F8_0 .var "clock", 0 0;
+v010C8950_0 .var "incr", 0 0;
+v010C89A8_0 .var "load", 0 0;
+v010CE080_0 .var "pcin", 7 0;
+v010CE0D8_0 .net "pcout", 7 0, v010C3540_0; 1 drivers
+v010CE130_0 .var "reset", 0 0;
+S_010CA018 .scope module, "a1" "PC" 2 10, 3 1, S_010C9F90;
+ .timescale -12 -12;
+v01102FA0_0 .net "clock", 0 0, v010C88F8_0; 1 drivers
+v01102FF8_0 .net "incr", 0 0, v010C8950_0; 1 drivers
+v01103050_0 .net "load", 0 0, v010C89A8_0; 1 drivers
+v010C34E8_0 .net "pcin", 7 0, v010CE080_0; 1 drivers
+v010C3540_0 .var "pcout", 7 0;
+v010C3598_0 .net "reset", 0 0, v010CE130_0; 1 drivers
+E_010C82E0 .event posedge, v01102FA0_0;
+    .scope S_010CA018;
+T_0 ;
+    %wait E_010C82E0;
+    %load/v 8, v010C3598_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %set/v v010C3540_0, 0, 8;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v01103050_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v010C34E8_0, 8;
+    %set/v v010C3540_0, 8, 8;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v010C3540_0, 8;
+    %mov 16, 0, 24;
+    %addi 8, 4, 32;
+    %set/v v010C3540_0, 8, 8;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_010C9F90;
+T_1 ;
+    %vpi_call 2 13 "$dumpfile", "vcd/PC_dump.vcd";
+    %vpi_call 2 13 "$dumpvars";
+    %vpi_call 2 14 "$dumpvars", 1'sb0, S_010C9F90;
+    %delay 1, 0;
+    %movi 8, 3, 8;
+    %set/v v010CE080_0, 8, 8;
+    %delay 1, 0;
+    %set/v v010C8950_0, 0, 1;
+    %set/v v010C89A8_0, 1, 1;
+    %set/v v010CE130_0, 0, 1;
+    %set/v v010C88F8_0, 1, 1;
+    %delay 5, 0;
+    %set/v v010C88F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 7, 8;
+    %set/v v010CE080_0, 8, 8;
+    %set/v v010C8950_0, 0, 1;
+    %set/v v010C89A8_0, 0, 1;
+    %set/v v010CE130_0, 1, 1;
+    %set/v v010C88F8_0, 1, 1;
+    %delay 5, 0;
+    %set/v v010C88F8_0, 0, 1;
+    %delay 1, 0;
+    %movi 8, 7, 8;
+    %set/v v010CE080_0, 8, 8;
+    %set/v v010C8950_0, 1, 1;
+    %set/v v010C89A8_0, 0, 1;
+    %set/v v010CE130_0, 0, 1;
+    %set/v v010C88F8_0, 1, 1;
+    %delay 10, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "PC_tb.v";
+    "./../design/PC.v";
