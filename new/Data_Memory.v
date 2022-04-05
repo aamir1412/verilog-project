@@ -10,7 +10,7 @@ module Data_Memory (clock, enable_write, enable_read, ram_addr, write_data, read
     reg [7:0] ram[255:0];
     
     initial begin
-    $readmemb("../data/instruction_memory_code.data",ins_addr);    
+        $readmemb("../data/data_memory_code.data",ram);    
     end
     
     always@(posedge clock)
