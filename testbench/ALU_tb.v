@@ -1,5 +1,5 @@
 `timescale 1ps/1ps
-`include "/Volumes/Files/COA/design/ALU_model.v"
+`include "../design/ALU_model.v"
 
 module ALU_tb;
     reg[3:0] operand_test_1, opperand_test_2;
@@ -7,7 +7,7 @@ module ALU_tb;
     wire[3:0] alu_test_out;
     ALU_model alu_model(.opperand_1(operand_test_1), .opperand_2(opperand_test_2), .opcode(op_test_code), .alu_out(alu_test_out));
     initial begin
-        $dumpfile("vcd/ALU_tb.vcd");
+        $dumpfile("vcd/ALU_dump.vcd");
         $dumpvars(0, ALU_tb);
         op_test_code = 3'b000;
         operand_test_1 = 4'b0011;
