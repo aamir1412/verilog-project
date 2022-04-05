@@ -1,39 +1,36 @@
-`timescale 1ns / 1ps
+`timescale 1ps/1ps
 `include "../design/Data_Memory.v" 
 
 module Data_Memory_tb;
-    reg clock, enable_write;
-    reg [7:0] write_addr, read_addr;
+    reg clock;
+    reg [7:0] address;
     reg [7:0] write_data;
+    reg mem_read;
+    reg mem_write;
     wire [7:0] read_data;
-        
-    Data_Memory uut(clock, enable_write, write_addr, read_addr,write_data, read_data);
-    
-    always #5 clock = ~clock;
+    Data_Memory uut(.clock(clock), .address(address), .mem_read(mem_read), .mem_write(mem_write), .write_data(write_data), .read_data(read_data));    
+
     initial 
         begin
 			$dumpfile("vcd/Data_Memory_dump.vcd");
 			$dumpvars(0, Data_Memory_tb);
 
+            #1
+            mem_write = 1;
+            mem_read = 0;
+            address = 8'b00000000;
+            write_data = 8'b00001000;
+            clock = 1;
+
+            #5;
             clock = 0;
-            enable_write = 1;
-            write_addr = 8'b00000000;
-            write_data = 8'b100;
-            
-            #20;
-            write_addr = 8'b00000001;
-            write_data = 8'b101;
-            
-            #20;
-            write_addr = 8'b00000010;
-            write_data = 8'b110;
-            enable_write = 0;   
-            
-            #20;
-            read_addr = 0;
-            
-            #20;
-            read_addr = 1;
+
+            #5;
+            mem_read = 1;
+            mem_write = 0;
+            address = 8'b00000000;
+            clock = 1;
+            #5;
 
         end
 endmodule

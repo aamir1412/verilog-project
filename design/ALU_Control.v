@@ -4,12 +4,14 @@
     output reg[2:0] alu_control;
     wire [4:0] alu_control_in;  
     assign alu_control_in = {alu_op, function_input};  
-    always @(alu_control_in)  
-    casex (alu_control_in)  
-        5'b00xxx: alu_control = 3'b001;  
-        5'b01xxx: alu_control = 3'b010;  
-        5'b10000: alu_control = 3'b001;  
-        5'b10010: alu_control = 3'b010;  
-    default: alu_control = 3'b000;  
-  endcase
+    always @(alu_control_in)
+    begin
+      casex (alu_control_in)  
+          5'b00xxx: alu_control = 3'b001;  
+          5'b01xxx: alu_control = 3'b010;  
+          5'b10000: alu_control = 3'b001;  
+          5'b10010: alu_control = 3'b010;  
+          default: alu_control = 3'b000; 
+      endcase 
+    end
 endmodule  
