@@ -1,0 +1,39 @@
+`timescale 1ns / 1ps
+`include "../design/Data_Register.v" 
+
+module Data_Register_tb;
+    reg clock, enable_write;
+    reg [255:0] write_addr, read_addr;
+    reg [7:0] write_data;
+    wire [7:0] read_data;    
+    Data_Register uut(clock, enable_write, write_addr, read_addr,write_data, read_data);
+    
+    always #5 clock = ~clock;
+    initial 
+        begin
+			$dumpfile("vcd/Data_Register_dump.vcd");
+			$dumpvars(0, Data_Register_tb)
+            ;
+            clock = 0;
+            enable_write = 1;
+            write_addr = 8'b00000000;
+            write_data = 8'b100;
+            
+            #20;
+            write_addr = 8'b00000001;
+            write_data = 8'b101;
+            
+            #20;
+            write_addr = 8'b00000010;
+            write_data = 8'b110;
+            enable_write = 0;   
+            
+            #20;
+            read_addr = 0;
+            
+            #20;
+            read_addr = 1;
+
+        end
+endmodule
+   

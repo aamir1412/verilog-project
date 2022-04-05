@@ -1,10 +1,8 @@
-module instruction_memory(
-    input [7:0] pc,
-    output reg [7:0] instruction
-    );    
+module Instruction_Memory (pc, instruction);   
+    input [7:0] pc;
+    output reg [7:0] instruction;
     reg [7:0] ins_addr[0:7];    
-    initial 
-    begin		          
+    initial begin		          
           $readmemb("../data/instruction_memory_code.data",ins_addr);                         
     end    
     always @(pc)

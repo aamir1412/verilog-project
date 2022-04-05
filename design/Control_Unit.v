@@ -8,7 +8,6 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                 ADD_OPCODE = 3'b100,
                 ADD_IMMEDIATE_OPCODE = 3'b101,
                 SUBTRACT_OPCODE = 3'b110;
-
     always @(*) begin
         case(control_opcode)
             LOAD_WORD_OPCODE:      

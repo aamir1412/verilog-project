@@ -1,15 +1,15 @@
 
 `timescale 1ps/1ps
-`include "../design/instruction_memory.v" 
+`include "../design/Instruction_Memory.v" 
 
-module instruction_memory_tb();
+module Instruction_Memory_tb();
       reg [7:0] pc;
       wire [7:0] instruction;                      
-	  instruction_memory a3(.pc(pc), .instruction(instruction));
+	  Instruction_Memory a3(.pc(pc), .instruction(instruction));
       initial
 		begin
-			$dumpfile("vcd/instruction_memory_dump.vcd");
-			$dumpvars(0,instruction_memory_tb);
+			$dumpfile("vcd/Instruction_Memory_dump.vcd");
+			$dumpvars(0, Instruction_Memory_tb);
             #1;
 			pc=8'd0; 
             #5;
