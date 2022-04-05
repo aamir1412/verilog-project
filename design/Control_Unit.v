@@ -1,90 +1,87 @@
+module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg, alu_op, mem_write, ALU_src, reg_write);
+    input [2:0] control_opcode;
+    output reg [1:0] alu_op;
+    output reg reg_dst, jump, branch, reg_write,  mem_read, mem_to_reg, mem_write, ALU_src;
+    parameter  LOAD_WORD_OPCODE = 3'b001,
+                STORE_WORD_OPCODE = 3'b010,
+                JUMP_OPCODE = 3'b011,
+                ADD_OPCODE = 3'b100,
+                ADD_IMMEDIATE_OPCODE = 3'b101,
+                SUBTRACT_OPCODE = 3'b110;
 
-    module Control_Unit (
-        input [2:0] opcode,
-        output reg RegDst,
-        output reg Branch,
-        output reg RegWrite,
-        output reg Jump,
-        output reg [1:0] ALUOp,
-        output reg MemRead,
-        output reg MemWrite,
-        output reg MemtoReg,
-        output reg ALUSrc
-    );
-    
-    always@(*) begin
-        case(opcode)
-            3'b000:      //lw
+    always @(*) begin
+        case(control_opcode)
+            LOAD_WORD_OPCODE:      
                 begin
-                    RegDst      <= 0;
-                    RegWrite    <= 1;
-                    Branch      <= 0;
-                    Jump        <= 0;
-                    ALUOp       <= 2'b00;
-                    MemRead     <= 1;
-                    MemWrite    <= 0;
-                    MemtoReg    <= 1;
-                    ALUSrc      <= 1;
+                    reg_dst <= 0;
+                    reg_write <= 1;
+                    branch <= 0;
+                    jump <= 0;
+                    alu_op <= 2'b00;
+                    mem_read <= 1;
+                    mem_write <= 0;
+                    mem_to_reg <= 1;
+                    ALU_src <= 1;
                 end
-            3'b001:      //sw
+            STORE_WORD_OPCODE:     
                 begin
-                    RegDst      <= 0;
-                    RegWrite    <= 0;
-                    Branch      <= 0;
-                    Jump        <= 0;
-                    ALUOp       <= 2'b00;
-                    MemRead     <= 0;
-                    MemWrite    <= 1;
-                    MemtoReg    <= 0;
-                    ALUSrc      <= 1;                
+                    reg_dst <= 0;
+                    reg_write <= 0;
+                    branch <= 0;
+                    jump <= 0;
+                    alu_op <= 2'b00;
+                    mem_read <= 0;
+                    mem_write <= 1;
+                    mem_to_reg <= 0;
+                    ALU_src <= 1;                
                 end
-            3'b010:      //add
+            JUMP_OPCODE :    
                 begin
-                    RegDst      <= 1;
-                    RegWrite    <= 1;
-                    Branch      <= 0;
-                    Jump        <= 0;
-                    ALUOp       <= 2'b00;
-                    MemRead     <= 0;
-                    MemWrite    <= 0;
-                    MemtoReg    <= 0;
-                    ALUSrc      <= 0;
+                    reg_dst <= 0;
+                    reg_write <= 0;
+                    branch <= 0;
+                    jump <= 1;
+                    alu_op <= 2'b01;
+                    mem_read <= 0;
+                    mem_write <= 0;
+                    mem_to_reg <= 0;
+                    ALU_src <= 0;
                 end
-            3'b011:      //addi
+            ADD_OPCODE:      
                 begin
-                    RegDst      <= 0;
-                    RegWrite    <= 1;
-                    Branch      <= 0;
-                    Jump        <= 0;
-                    ALUOp       <= 2'b00;
-                    MemRead     <= 0;
-                    MemWrite    <= 0;
-                    MemtoReg    <= 0;
-                    ALUSrc      <= 1;
+                    reg_dst <= 1;
+                    reg_write <= 1;
+                    branch <= 0;
+                    jump <= 0;
+                    alu_op <= 2'b10;
+                    mem_read <= 0;
+                    mem_write <= 0;
+                    mem_to_reg <= 0;
+                    ALU_src <= 0;
                 end
-            3'b100:      //sub
+            ADD_IMMEDIATE_OPCODE:     
                 begin
-                    RegDst      <= 1;
-                    RegWrite    <= 1;
-                    Branch      <= 0;
-                    Jump        <= 0;
-                    ALUOp       <= 2'b10;
-                    MemRead     <= 0;
-                    MemWrite    <= 0;
-                    MemtoReg    <= 0;
-                    ALUSrc      <= 0;
+                    reg_dst <= 0;
+                    reg_write <= 1;
+                    branch <= 0;
+                    jump <= 0;
+                    alu_op <= 2'b10;
+                    mem_read <= 0;
+                    mem_write <= 0;
+                    mem_to_reg <= 0;
+                    ALU_src <= 1;
                 end
-            3'b101:    //jmp
+            SUBTRACT_OPCODE:      
                 begin
-                    RegDst      <= 0;
-                    RegWrite    <= 0;
-                    Branch      <= 0;
-                    Jump        <= 1;
-                    ALUOp       <= 2'b11;
-                    MemRead     <= 0;
-                    MemWrite    <= 0;
-                    MemtoReg    <= 0;
-                    ALUSrc      <= 0;
+                    reg_dst <= 1;
+                    reg_write <= 1;
+                    branch <= 0;
+                    jump <= 0;
+                    alu_op <= 2'b10;
+                    mem_read <= 0;
+                    mem_write <= 0;
+                    mem_to_reg <= 0;
+                    ALU_src <= 0;
                 end
             endcase
         end

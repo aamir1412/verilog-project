@@ -1,0 +1,74 @@
+$date
+	Tue Apr  5 03:17:53 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module ALU_Control_tb $end
+$var wire 3 ! alu_control [2:0] $end
+$var reg 2 " alu_op [1:0] $end
+$var reg 3 # function_input [2:0] $end
+$scope module a1 $end
+$var wire 2 $ alu_op [1:0] $end
+$var wire 3 % function_input [2:0] $end
+$var wire 5 & alu_control_in [4:0] $end
+$var reg 3 ' alu_control [2:0] $end
+$upscope $end
+$upscope $end
+$scope module ALU_Control_tb $end
+$scope module a1 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx '
+bx &
+bx %
+bx $
+bx #
+bx "
+bx !
+$end
+#1
+b1 !
+b1 '
+b0 #
+b0 %
+b0 &
+b0 "
+b0 $
+#6
+b10 &
+b10 #
+b10 %
+#11
+b10 !
+b10 '
+b0 #
+b0 %
+b1000 &
+b1 "
+b1 $
+#16
+b1010 &
+b10 #
+b10 %
+#21
+b1 !
+b1 '
+b0 #
+b0 %
+b10000 &
+b10 "
+b10 $
+#26
+b10 !
+b10 '
+b10010 &
+b10 #
+b10 %
+#36
