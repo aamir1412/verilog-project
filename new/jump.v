@@ -10,7 +10,7 @@ module jump(
     
     always@(*)
     begin
-        assign jump_j = {jump_op, jump_addr};
+        assign jump_j[7:0] = {jump_op[2:0], jump_addr[4:0]};
     end
     
     
