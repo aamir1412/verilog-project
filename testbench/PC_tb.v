@@ -11,7 +11,7 @@ module PC_tb();
 	initial
 		begin
 			$dumpfile("vcd/PC_dump.vcd"); $dumpvars;
-			$dumpvars(0,PC_tb);
+			$dumpvars(0, PC_tb);
             #1;
 			pcin=8'b00000011; 
             #1;

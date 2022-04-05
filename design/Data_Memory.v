@@ -1,19 +1,14 @@
-`timescale 1ns / 1ps
-
-module Data_Register (clock, enable_write, write_addr, read_addr, write_data, read_data);
-
+module Data_Memory (clock, enable_write, write_addr, read_addr, write_data, read_data);
     input wire clock, enable_write;
     input wire [7:0] write_addr, read_addr;
     input wire [7:0] write_data;
     output wire [7:0] read_data;
-
     //Register Bit capacity and Data Register Size declaration 
     reg [7:0] register[255:0];
-
+    
     always@(posedge clock)
         if(enable_write)
             register[write_addr] <= write_data;
     assign read_data = register[read_addr];
-
 endmodule
 
