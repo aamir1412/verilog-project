@@ -1,7 +1,7 @@
 module ALU (opperand_1, opperand_2, opcode, alu_out);
-    input [3:0] opperand_1, opperand_2;
+    input [7:0] opperand_1, opperand_2;
     input [2:0] opcode;
-    output reg [3:0] alu_out;
+    output reg [7:0] alu_out;
     always @(*) begin
         case (opcode)
             3'b000 : alu_out = 0;
