@@ -1,8 +1,7 @@
 module instruction_memory(
     input [7:0] pc,
     output reg [7:0] instruction
-    );
-    
+    );    
     reg [7:0] ins_addr[0:7];    
     initial 
     begin		          
