@@ -1,0 +1,66 @@
+$date
+	Tue Apr 05 01:44:21 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module instruction_memory_tb $end
+$var wire 8 ! instruction [7:0] $end
+$var reg 8 " pc [7:0] $end
+$scope module a3 $end
+$var wire 8 # pc [7:0] $end
+$var reg 8 $ instruction [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx $
+bx #
+bx "
+bx !
+$end
+#1
+b11 $
+b11 !
+b0 "
+b0 #
+#6
+b100 $
+b100 !
+b1 "
+b1 #
+#11
+b110 $
+b110 !
+b10 "
+b10 #
+#16
+b1001 $
+b1001 !
+b11 "
+b11 #
+#21
+b10 $
+b10 !
+b100 "
+b100 #
+#26
+b1010 $
+b1010 !
+b101 "
+b101 #
+#31
+b111 $
+b111 !
+b110 "
+b110 #
+#36
+b10101 $
+b10101 !
+b111 "
+b111 #
+#41
