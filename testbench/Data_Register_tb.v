@@ -3,17 +3,18 @@
 
 module Data_Register_tb;
     reg clock, enable_write;
-    reg [255:0] write_addr, read_addr;
+    reg [7:0] write_addr, read_addr;
     reg [7:0] write_data;
-    wire [7:0] read_data;    
+    wire [7:0] read_data;
+        
     Data_Register uut(clock, enable_write, write_addr, read_addr,write_data, read_data);
     
     always #5 clock = ~clock;
     initial 
         begin
 			$dumpfile("vcd/Data_Register_dump.vcd");
-			$dumpvars(0, Data_Register_tb)
-            ;
+			$dumpvars(0, Data_Register_tb);
+
             clock = 0;
             enable_write = 1;
             write_addr = 8'b00000000;
