@@ -1,17 +1,14 @@
-`timescale 1ns / 1ps
-
-
-module pc(
-    clock, reset,out_pc, in_pc
-    );
-    input clock, reset;
-    input [7:0] in_pc ;
-    output reg [7:0] out_pc;
-    
-    always@(posedge clock or posedge reset)
-    begin
-    if(~reset) out_pc<=8'd00000000;
-    else out_pc <= in_pc;
-    end
+module PC(pcin, incr, load, reset, clock, pcout);
+	input [7:0] pcin;
+	input incr, load, reset, clock;
+	output reg[7:0] pcout;
+	always @(posedge clock)
+		begin
+			if (reset)
+				pcout = 8'b00000000;
+			else if(load)
+				pcout = pcin;
+			else
+				pcout = pcout + 1;
+		end
 endmodule
-
