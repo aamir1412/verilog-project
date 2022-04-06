@@ -20,8 +20,8 @@ module Register_File(clock, reset, read_register1, read_register2, write_enable,
                 regfile[write_register] <= write_data;
             else if (reset == 1)
                 begin
-                    regfile[0] <= 8'b00000000;
-                    regfile[1] <= 8'b00000000;
+                    regfile[0] <= 8'b00000010;
+                    regfile[1] <= 8'b00000100;
                 end
         end
 endmodule
