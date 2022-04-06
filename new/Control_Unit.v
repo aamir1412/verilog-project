@@ -17,7 +17,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 0;
                     reg_write <= 1;
                     branch <= 0;
-                    jump <= 0;
+                    jumpp <= 0;
                     alu_op <= 2'b00;
                     mem_read <= 1;
                     mem_write <= 0;
@@ -29,7 +29,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 0;
                     reg_write <= 0;
                     branch <= 0;
-                    jump <= 0;
+                    jumpp <= 0;
                     alu_op <= 2'b00;
                     mem_read <= 0;
                     mem_write <= 1;
@@ -41,7 +41,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 0;
                     reg_write <= 0;
                     branch <= 0;
-                    jump <= 1;
+                    jumpp <= 1;
                     alu_op <= 2'b01;
                     mem_read <= 0;
                     mem_write <= 0;
@@ -53,7 +53,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 1;
                     reg_write <= 1;
                     branch <= 0;
-                    jump <= 0;
+                    jumpp <= 0;
                     alu_op <= 2'b10;
                     mem_read <= 0;
                     mem_write <= 0;
@@ -65,7 +65,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 0;
                     reg_write <= 1;
                     branch <= 0;
-                    jump <= 0;
+                    jumpp <= 0;
                     alu_op <= 2'b10;
                     mem_read <= 0;
                     mem_write <= 0;
@@ -77,7 +77,7 @@ module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg
                     reg_dst <= 1;
                     reg_write <= 1;
                     branch <= 0;
-                    jump <= 0;
+                    jumpp <= 0;
                     alu_op <= 2'b10;
                     mem_read <= 0;
                     mem_write <= 0;

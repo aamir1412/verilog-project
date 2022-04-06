@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module Register_File(clock, reset, read_register1, read_register2, write_enable, write_register, write_data, regfile, read_data1, read_data2);
+module Register_File(clock, reset, read_register1, read_register2, write_enable, write_register, write_data, read_data1, read_data2);
     input clock;
     input reset;
     input read_register1;
@@ -22,7 +22,7 @@ module Register_File(clock, reset, read_register1, read_register2, write_enable,
                 register[0] <= 8'b0;
                 register[1] <= 8'b0;
              end
-             else if (write_enable ==1)
+             else if (~write_enable)
                 register[write_register] <= write_data;
         end
 endmodule
