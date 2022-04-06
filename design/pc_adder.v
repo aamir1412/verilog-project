@@ -1,14 +1,8 @@
-`timescale 1ns / 1ps
-
-
-module pc_adder(
-    add_pc, pc_add
-    ); 
-    input [7:0] add_pc;
-    output [7:0] pc_add;
-    
+module PC_Adder(pc_in, pc_out); 
+    input [7:0] pc_in;
+    output [7:0] pc_out;
     always@(*)
-    begin
-    assign pc_add = add_pc + 1;
-    end
+        begin
+            assign pc_out = pc_in + 1;
+        end
 endmodule
