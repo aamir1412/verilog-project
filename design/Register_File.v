@@ -1,5 +1,5 @@
 
-module Register_File(clock, reset, read_register1, read_register2, write_enable, write_register, write_data, regfile, read_data1, read_data2);
+module Register_File(clock, reset, read_register1, read_register2, write_enable, write_register, write_data, read_data1, read_data2);
     input clock;
     input reset;
     input read_register1;
