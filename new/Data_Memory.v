@@ -8,16 +8,12 @@ module Data_Memory (clock, enable_write, enable_read, ram_addr, write_data, read
     output reg [7:0] read_data;
 
     reg [7:0] ram[255:0];
-    
-    initial begin
-        $readmemb("../data/data_memory_code.data",ram);    
-    end
-    
+ 
     always@(posedge clock)
     begin
         if(enable_write)
             ram[ram_addr] <= write_data;
-        if(enable_read)
+        else if(enable_read)
             read_data = ram[ram_addr];
     end
 endmodule
