@@ -2,7 +2,7 @@
 
 
 module jump(
-    jump_op, jump_addr, jump_j
+    jump_addr, jump_j
     );
     input [4:0] jump_addr;
     output reg [7:0] jump_j;
