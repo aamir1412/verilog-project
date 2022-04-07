@@ -9,7 +9,7 @@ module jump(
     
     always@(*)
     begin
-        assign jump_j[7:0] = {3'b000, jump_addr[4:0]};
+       jump_j[7:0] <= {3'b000, jump_addr[4:0]};
     end
     
     

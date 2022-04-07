@@ -8,7 +8,10 @@ module Data_Memory ( enable_write, enable_read, ram_addr, write_data, read_data)
     output reg [7:0] read_data;
 
     reg [7:0] ram[255:0];
-
+    initial begin		          
+        ram[0]= 8'b01001000;
+        ram[1]= 8'b00001000;                          
+    end  
     
     always@(*)
     begin

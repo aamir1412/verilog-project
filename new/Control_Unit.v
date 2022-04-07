@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
-module Control_Unit (control_opcode, reg_dst, jump, branch, mem_read, mem_to_reg, alu_op, mem_write, ALU_src, reg_write);
+module Control_Unit (control_opcode, reg_dst, jumpp, branch, mem_read, mem_to_reg, alu_op, mem_write, ALU_src, reg_write);
     input [2:0] control_opcode;
     output reg [1:0] alu_op;
-    output reg reg_dst, jump, branch, reg_write,  mem_read, mem_to_reg, mem_write, ALU_src;
+    output reg reg_dst, jumpp, branch, reg_write,  mem_read, mem_to_reg, mem_write, ALU_src;
     parameter  LOAD_WORD_OPCODE = 3'b001,
                 STORE_WORD_OPCODE = 3'b010,
                 JUMP_OPCODE = 3'b011,

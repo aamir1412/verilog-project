@@ -5,7 +5,7 @@ module Instruction_Memory (pc, instruction);
     output reg [7:0] instruction;
     reg [7:0] rom[255:0];    
     initial begin		          
-        rom[0]= 8'b10010000;                          
+        rom[0]= 8'b00111001;                          
     end    
     always @(pc)
         begin

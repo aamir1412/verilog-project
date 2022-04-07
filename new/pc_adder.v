@@ -7,8 +7,6 @@ module pc_adder(
     input [7:0] add_pc;
     output [7:0] pc_add;
     
-    always@(*)
-    begin
     assign pc_add = add_pc + 1;
-    end
+
 endmodule

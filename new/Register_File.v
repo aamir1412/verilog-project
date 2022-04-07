@@ -16,13 +16,14 @@ module Register_File(clock, reset, read_register1, read_register2, write_enable,
     assign read_data2 = register[read_register2];
     
     always @(posedge clock)
-        begin
-             if (~reset)
-             begin
-                register[0] <= 8'b0;
-                register[1] <= 8'b0;
-             end
-             else if (~write_enable)
-                register[write_register] <= write_data;
-        end
+        begin  
+        if (reset)
+            begin
+            register[0]<=8'b0;
+            register[1]<=8'b0;
+            end
+        else if (write_enable)
+                register[write_register] <= write_data;  
+        end   
+        
 endmodule
