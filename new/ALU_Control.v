@@ -11,7 +11,8 @@ module ALUControl(function_input, alu_op, alu_control);
         5'b00xxx: alu_control = 3'b001;  
         5'b01xxx: alu_control = 3'b010;  
         5'b10000: alu_control = 3'b001;  
-        5'b10010: alu_control = 3'b010;  
+        5'b10010: alu_control = 3'b010;
+        5'b11xxx: alu_control = 3'b001;  
     default: alu_control = 3'b000;  
   endcase
 endmodule

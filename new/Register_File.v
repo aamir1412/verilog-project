@@ -19,8 +19,8 @@ module Register_File(clock, reset, read_register1, read_register2, write_enable,
         begin  
         if (reset)
             begin
-            register[0]<=8'b0;
-            register[1]<=8'b0;
+            register[0]<=8'b00000101;
+            register[1]<=8'b00000001;
             end
         else if (write_enable)
                 register[write_register] <= write_data;  

@@ -66,7 +66,7 @@ module Control_Unit (control_opcode, reg_dst, jumpp, branch, mem_read, mem_to_re
                     reg_write <= 1;
                     branch <= 0;
                     jumpp <= 0;
-                    alu_op <= 2'b10;
+                    alu_op <= 2'b11;
                     mem_read <= 0;
                     mem_write <= 0;
                     mem_to_reg <= 0;
